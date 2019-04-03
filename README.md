@@ -3,7 +3,7 @@ A very old Regular Expression grep replacement I wrote in '93
 
 Sharing for laughs.
 
-```$ cat Examples/ex1
+```% cat Examples/ex1
 % dgrep -d '^([abc]+)\1$'
 
 pattern:^([abc]+)\1$
@@ -41,4 +41,105 @@ abcabc
 	capture 1 [abc]
 abcab
 3:** Reject **
+```
+
+<hr>
+
+# The Khadafy Test RE
+
+```
+% dgrep -d -f khadafy.regexp
+
+pattern:M[ou]'?am+[ae]r .*([AEae]l[- ])?[GKQ]h?[aeu]+([dtz][dhz]?)+af[iy]
+-------------------------------
+
+         Compiled RE
+
+State:START_STATE(0), num transitions 1
+	Next state:'M'(1)
+State:'M'(1), num transitions 1
+	Next state:SET(2)
+State:SET(2), num transitions 2
+	Set:<ou>
+	Next state:'''(3)
+	Next state:'a'(4)
+State:'''(3), num transitions 1
+	Next state:'a'(4)
+State:'a'(4), num transitions 1
+	Next state:'m'(5)
+State:'m'(5), num transitions 2
+	Next state:'m'(6)
+	Next state:SET(7)
+State:'m'(6), num transitions 2
+	Next state:'m'(6)
+	Next state:SET(7)
+State:SET(7), num transitions 1
+	Set:<ae>
+	Next state:'r'(8)
+State:'r'(8), num transitions 1
+	Next state:' '(9)
+State:' '(9), num transitions 1
+	Next state:ANYTHING(10)
+State:ANYTHING(10), num transitions 2
+	Next state:SET(16)
+	Next state:START_CAPTURE(11)
+State:START_CAPTURE(11), num transitions 1
+	Next state:SET(12)
+State:SET(12), num transitions 1
+	Set:<AEae>
+	Next state:'l'(13)
+State:'l'(13), num transitions 1
+	Next state:SET(14)
+State:SET(14), num transitions 1
+	Set:<- >
+	Next state:END_CAPTURE(15)
+State:END_CAPTURE(15), num transitions 1
+	Next state:SET(16)
+State:SET(16), num transitions 2
+	Set:<GKQ>
+	Next state:'h'(17)
+	Next state:SET(18)
+State:'h'(17), num transitions 1
+	Next state:SET(18)
+State:SET(18), num transitions 2
+	Set:<aeu>
+	Next state:SET(19)
+	Next state:START_CAPTURE(20)
+State:SET(19), num transitions 2
+	Set:<aeu>
+	Next state:SET(19)
+	Next state:START_CAPTURE(20)
+State:START_CAPTURE(20), num transitions 1
+	Next state:SET(21)
+State:SET(21), num transitions 2
+	Set:<dtz>
+	Next state:SET(22)
+	Next state:END_CAPTURE(23)
+State:SET(22), num transitions 1
+	Set:<dhz>
+	Next state:END_CAPTURE(23)
+State:END_CAPTURE(23), num transitions 2
+	Next state:'a'(28)
+	Next state:START_CAPTURE(24)
+State:START_CAPTURE(24), num transitions 1
+	Next state:SET(25)
+State:SET(25), num transitions 2
+	Set:<dtz>
+	Next state:SET(26)
+	Next state:END_CAPTURE(27)
+State:SET(26), num transitions 1
+	Set:<dhz>
+	Next state:END_CAPTURE(27)
+State:END_CAPTURE(27), num transitions 2
+	Next state:'a'(28)
+	Next state:START_CAPTURE(24)
+State:'a'(28), num transitions 1
+	Next state:'f'(29)
+State:'f'(29), num transitions 1
+	Next state:SET(30)
+State:SET(30), num transitions 1
+	Set:<iy>
+	Next state:ACCEPT_STATE(31)
+
+-------------------------------
 ```
